@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guest-book-frontend
+  labels:
+    app: guest-book-app
+    name: guest-book
+spec:
+  template:
+    metadata:
+      name: front-end
+      labels:
+        app: guest-book-app
+        name: guest-book
+    spec:
+      containers:
+        - image: gcr.io/google-samples/gb-frontend:v4
+          name: gb-frontend
+          ports:
+           - containerPort: 80
+  selector:
+    matchLabels:
+      app: guest-book-app
+      name: guest-book
+  replicas: 1
+

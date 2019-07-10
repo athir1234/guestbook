@@ -1,0 +1,17 @@
+apiVersion: v1
+            kind: Service
+            metadata:
+              name: front-end-service
+              labels:
+                app: guest-book-app
+                name: guest-book
+            spec:
+              type: nodePort
+              ports:
+                - port: 80
+                  targetPort: 80
+              selector:
+                app: guest-book-app
+                name: guest-book
+
+
